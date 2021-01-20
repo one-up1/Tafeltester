@@ -8,18 +8,18 @@
         Title="Tafeltester" Height="408.214" Width="673.572">
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="313*"/>
-            <ColumnDefinition Width="183*"/>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="136*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="lMaxValue" Content="Vul het hoogste getal in dat gebruikt mag worden in de sommen:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="364"/>
-        <TextBox x:Name="tbMaxValue" HorizontalAlignment="Left" Height="23" Margin="58,13,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="287" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <Button x:Name="bAddEquations" Content="Maak sommen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,41,0,0" Click="bAddEquations_Click"/>
-        <Label x:Name="lEquations" Content="Sommen:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,66,0,0"/>
-        <StackPanel x:Name="spEquations" HorizontalAlignment="Left" Height="188" Margin="10,97,0,0" VerticalAlignment="Top" Width="639" Grid.ColumnSpan="4"/>
-        <Button x:Name="bCheckResults" Content="Laat score zien" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,290,0,0" Click="bCheckResults_Click" IsEnabled="False"/>
-        <Label x:Name="lScore" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,315,0,0" Width="282" FontWeight="Bold"/>
+        <Label x:Name="lMaxValue" Content="Vul het hoogste getal in dat gebruikt mag worden in de sommen:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="6" Width="368"/>
+        <TextBox x:Name="tbMaxValue" Height="23" Margin="149,13,-116,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="bAddEquations" Content="Maak sommen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,72,0,0" Click="bAddEquations_Click"/>
+        <Label x:Name="lEquations" Content="Sommen:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,97,0,0" Width="65"/>
+        <StackPanel x:Name="spEquations" Margin="10,123,0,0" Grid.ColumnSpan="9"/>
+        <Button x:Name="bCheckResults" Content="Laat score zien" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,326,0,0" Click="bCheckResults_Click" IsEnabled="False"/>
+        <Label x:Name="lScore" Content="" VerticalAlignment="Bottom" Margin="10,315,0,0" FontWeight="Bold" Grid.ColumnSpan="6"/>
+        <Label x:Name="lEquationCount" Content="Vul het aan sommen in:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Grid.ColumnSpan="5" Width="364"/>
+        <TextBox x:Name="tbEquationCount" Height="23" Margin="149,41,-115,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Grid.Column="1"/>
 
     </Grid>
 </Window>
