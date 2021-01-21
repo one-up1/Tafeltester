@@ -18,7 +18,8 @@ namespace Tafeltester
 
         private void bAddEquations_Click(object sender, RoutedEventArgs e)
         {
-            spEquations.Children.Clear();
+            gEquations.RowDefinitions.Clear();
+            gEquations.Children.Clear();
             bCheckResults.IsEnabled = false;
             lScore.Content = "";
 
@@ -61,29 +62,35 @@ namespace Tafeltester
             }
 
             Random random = new Random();
-            for (int i = 1; i <= equationCount; i++)
+            for (int i = 0; i < equationCount; i++)
             {
+                int number = i + 1;
                 int valueIndex = random.Next(0, values.Count);
                 int value = values[valueIndex];
                 values.RemoveAt(valueIndex);
 
-                StackPanel spEquation = new StackPanel();
-                spEquation.Orientation = Orientation.Horizontal;
-                spEquation.Tag = i * value; // The correct answer.
-
+                RowDefinition row = new RowDefinition();
+                row.Height = GridLength.Auto;
+                gEquations.RowDefinitions.Add(row);
+                
                 Label lEquation = new Label();
-                lEquation.Content = i + " x " + value + " =";
-                spEquation.Children.Add(lEquation);
+                lEquation.SetValue(Grid.RowProperty, i);
+                lEquation.SetValue(Grid.ColumnProperty, 0);
+                lEquation.Content = number + " x " + value + " =";
+                gEquations.Children.Add(lEquation);
 
                 TextBox tbResult = new TextBox();
-                tbResult.Width = 100;
-                spEquation.Children.Add(tbResult);
+                tbResult.SetValue(Grid.RowProperty, i);
+                tbResult.SetValue(Grid.ColumnProperty, 1);
+                tbResult.Margin = new Thickness(2);
+                gEquations.Children.Add(tbResult);
 
                 Label lResult = new Label();
+                lResult.SetValue(Grid.RowProperty, i);
+                lResult.SetValue(Grid.ColumnProperty, 2);
                 lResult.FontWeight = FontWeights.Bold;
-                spEquation.Children.Add(lResult);
-
-                spEquations.Children.Add(spEquation);
+                lResult.Tag = number * value; // The correct answer.
+                gEquations.Children.Add(lResult);
             }
 
             bCheckResults.IsEnabled = true;
@@ -92,9 +99,11 @@ namespace Tafeltester
         private void bCheckResults_Click(object sender, RoutedEventArgs e)
         {
             int correctResults = 0;
-            foreach (StackPanel spEquation in spEquations.Children)
+            for (int i = 0; i < gEquations.RowDefinitions.Count; i++)
             {
-                TextBox tbResult = (TextBox)spEquation.Children[1];
+                int index = i * 3;
+
+                TextBox tbResult = (TextBox)gEquations.Children[index + 1];
                 int result;
                 try
                 {
@@ -106,8 +115,8 @@ namespace Tafeltester
                     return;
                 }
 
-                Label lResult = (Label)spEquation.Children[2];
-                if (result == (int)spEquation.Tag)
+                Label lResult = (Label)gEquations.Children[index + 2];
+                if (result == (int)lResult.Tag)
                 {
                     correctResults++;
                     lResult.Content = "Goed";
@@ -120,16 +129,24 @@ namespace Tafeltester
                 }
             }
 
-            lScore.Content = "Je hebt een " + Math.Round(
-                correctResults * 10d / spEquations.Children.Count);
+            int score = (int)Math.Round(correctResults * 10d / gEquations.RowDefinitions.Count);
+            if (score == 0)
+            {
+                // Je kunt geen 0 halen.
+                score = 1;
+            }
+
+            lScore.Content = "Je hebt een " + score;
             lScore.Foreground = Brushes.Black;
         }
 
-        private void setError(string content, UIElement control)
+        private void setError(string content, TextBox textBox)
         {
             lScore.Content = content;
             lScore.Foreground = Brushes.Red;
-            control.Focus();
+
+            textBox.SelectAll();
+            textBox.Focus();
         }
     }
 }

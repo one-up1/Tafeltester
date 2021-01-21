@@ -5,21 +5,117 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tafeltester"
         mc:Ignorable="d"
-        Title="Tafeltester" Height="408.214" Width="673.572">
-    <Grid Margin="0,0,2,0">
+        Title="Tafeltester"
+        Width="500"
+        Height="350"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid
+        Margin="8">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Label x:Name="lMaxValue" Content="Vul het hoogste getal in dat gebruikt mag worden in de sommen:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="6" Width="368"/>
-        <TextBox x:Name="tbMaxValue" Height="23" Margin="149,13,-116,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Grid.Column="1"/>
-        <Button x:Name="bAddEquations" Content="Maak sommen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,72,0,0" Click="bAddEquations_Click"/>
-        <Label x:Name="lEquations" Content="Sommen:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,97,0,0" Width="65"/>
-        <StackPanel x:Name="spEquations" Margin="10,123,0,0" Grid.ColumnSpan="9"/>
-        <Button x:Name="bCheckResults" Content="Laat score zien" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" Margin="10,326,0,0" Click="bCheckResults_Click" IsEnabled="False"/>
-        <Label x:Name="lScore" Content="" VerticalAlignment="Bottom" Margin="10,315,0,0" FontWeight="Bold" Grid.ColumnSpan="6"/>
-        <Label x:Name="lEquationCount" Content="Vul het aan sommen in:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Grid.ColumnSpan="5" Width="364"/>
-        <TextBox x:Name="tbEquationCount" Height="23" Margin="149,41,-115,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Grid.Column="1"/>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Name="lMaxValue"
+                Content="Vul het hoogste getal in dat gebruikt mag worden in de sommen:" />
+
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="2"
+                Name="tbMaxValue"
+                Text="8" />
+            
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Name="lEquationCount"
+                Content="Vul het aan sommen in:" />
+
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="2"
+                Name="tbEquationCount"
+                Text="5" />
+            
+        </Grid>
+        
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Width="100"
+            Name="bAddEquations"
+            Content="Maak sommen"
+            Click="bAddEquations_Click"/>
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Name="lEquations"
+            Content="Sommen:"
+            FontWeight="Bold" />
+
+        <Grid
+            Grid.Row="3"
+            Grid.Column="0"
+            Name="gEquations">
+
+            <Grid.RowDefinitions />
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
+        <Button
+            Grid.Row="4"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Width="100"
+            Name="bCheckResults"
+            Content="Laat score zien"
+            Click="bCheckResults_Click"
+            IsEnabled="False "/>
+
+        <Label
+            Grid.Row="5"
+            Grid.Column="0"
+            Name="lScore"
+            Content=""
+            FontWeight="Bold" />
 
     </Grid>
+    
 </Window>
