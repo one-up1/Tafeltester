@@ -41,7 +41,7 @@ namespace Tafeltester
             }
             catch
             {
-                setError("Vul het aantal sommen in", tbMaxValue);
+                setError("Vul het aantal sommen in", tbEquationCount);
                 return;
             }
 
